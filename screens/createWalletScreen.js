@@ -1,3 +1,5 @@
+
+import { Buffer } from "buffer";
 import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -9,13 +11,20 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
+import Web3 from "web3";
+//  import "../global"
+  //  import "../shim"
+  // import crypto from 'crypto'
+  // import crypto from "react-native-crypto"
 
 import * as Random from "expo-random";
-import { Buffer } from "buffer";
+
 import createHash from "create-hash";
-// import { ethers } from "ethers";
-// import Web3 from "web3";
+
+//  import { ethers } from "ethers";
 // const Web3 = require('web3');
+
+ 
 
 const wordList = [
   "abandon",
@@ -2068,11 +2077,11 @@ const wordList = [
   "zoo",
 ];
 
-  // const web3 = new Web3(
-  //   Web3.givenProvider ||
-  //     "https://rinkeby.infura.io/v3/c7f3e2484374419ab5dfe1d0428062a6"
-  // );
-  // console.log(web3)
+  const web3 = new Web3(
+    Web3.givenProvider ||
+      "https://rinkeby.infura.io/v3/c7f3e2484374419ab5dfe1d0428062a6"
+  );
+  // console.log(web3.eth.accounts.encrypt("0x788fa5bac4765f66e48a4d663641a00fa462d9e5252bc400719212908f64ffcb", "test1"))
 
 export default class CreateWalletScreen extends React.Component {
   constructor(props) {
@@ -2091,6 +2100,8 @@ export default class CreateWalletScreen extends React.Component {
     let buffer = new Buffer.from(RB);
 
     this.entropyToMnemonic(buffer, wordList);
+
+    //  console.log(crypto.randomBytes(32).toString('hex'))
   }
 
   phraseSeperator = () => {
@@ -2177,15 +2188,27 @@ export default class CreateWalletScreen extends React.Component {
   createWallet = () => {
     // let mnemonicWallet = ethers.Wallet.fromMnemonic(this.state.mnemonic);
     // this.setState({ privateKey: mnemonicWallet.privateKey }, () => {
-    //   let encryptedWallet = web3.eth.accounts.encrypt(
+    //   let encryptedWallet =  web3.eth.accounts.encrypt(
     //     this.state.privateKey,
     //     this.state.walletPassword
     //   );
-    //   console.log(encryptedWallet);
+    //    console.log(encryptedWallet);
+      // console.log("Wallet private key : ",typeof(this.state.privateKey));
+      // console.log("password",typeof(this.state.walletPassword))
     // });
 
     // console.log("Wallet address : ", mnemonicWallet.address);
-    // console.log("Wallet private key : ", mnemonicWallet.privateKey);
+    //  console.log("Wallet private key : ", mnemonicWallet.privateKey);
+
+    // let encryptedWallet =  web3.eth.accounts.encrypt(
+    //       "0x788fa5bac4765f66e48a4d663641a00fa462d9e5252bc400719212908f64ffcb",
+    //       "1234"
+    //     );
+// web3.eth.getAccounts().then((x)=>{
+//   console.log(x)
+// })
+console.log(encryptedWallet)
+        
   };
 
   render() {

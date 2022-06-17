@@ -3,7 +3,7 @@ import { View, Text ,AppRegistry, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
-
+import "./shim"
 //Screen Import
 import HomeScreen from './screens/homeScreen';
 import CreateWalletScreen from './screens/createWalletScreen';
